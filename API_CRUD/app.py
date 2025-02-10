@@ -91,7 +91,19 @@ def update_customer(id):
         # Si no se encuentra el cliente, devolver un error
         return jsonify({"error": "Cliente no encontrado"}), 404
     
-@app.route('/customers/')
+@app.route('/customers/<int:id>', methods=['DELETE'])
+def delete_costumer(id):
+    if request.method == 'DELETE':
+        customer_to_delete = next((customer for customer in customers_list if customer['id'] == id), None)
+        if customer_to_delete:
+        
+            customers_list.remove(customer_to_delete)
+        return jsonify({"message": "Cliente eliminado correctamente"}), 200
+    else:
+        return jsonify({"error": "Cliente no encontrado"}), 404
+        
+    
+        
 
 
 
