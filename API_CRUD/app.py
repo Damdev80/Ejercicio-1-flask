@@ -89,7 +89,9 @@ def update_customer(id):
                 return jsonify({"message": "Cliente actualizado correctamente", "customer": customer}), 200
         
         # Si no se encuentra el cliente, devolver un error
-        return jsonify({"error": "Cliente no encontrado"}), 404        
+        return jsonify({"error": "Cliente no encontrado"}), 404
+    
+@app.route('/customers/')
 
 
 
